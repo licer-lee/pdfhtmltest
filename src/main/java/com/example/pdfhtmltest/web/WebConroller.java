@@ -22,8 +22,6 @@ public class WebConroller {
     @RequestMapping("/createAndView")
     public ResponseEntity<byte[]> pdfCreateAndView1() {
 
-
-
         List<Map> auditLogs = new ArrayList<>();
         Map mapd = new HashMap();
         mapd.put("auditPeople","孙悟空1");
