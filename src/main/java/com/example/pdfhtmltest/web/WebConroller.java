@@ -138,4 +138,80 @@ public class WebConroller {
         return new ResponseEntity<>(out.toByteArray(), httpHeaders, HttpStatus.OK);
 
     }
+
+    @RequestMapping("/tripPlan")
+    public ResponseEntity<byte[]> tripPlan() {
+
+        List<Map> auditLogs = new ArrayList<>();
+        Map mapd = new HashMap();
+        mapd.put("auditPeople","孙悟空1");
+        mapd.put("auditName","发起申请");
+        mapd.put("auditTime", "2020-05-28 16:13");
+        mapd.put("auditResult", "提交审核");
+        auditLogs.add(mapd);
+
+        mapd = new HashMap();
+        mapd.put("auditPeople","猪八戒2");
+        mapd.put("auditName","领导审批");
+        mapd.put("auditTime", "2020-05-28 16:13");
+        mapd.put("auditResult", "通过");
+        auditLogs.add(mapd);
+
+        mapd = new HashMap();
+        mapd.put("auditPeople","沙和尚3");
+        mapd.put("auditName","财务审批");
+        mapd.put("auditTime", "2020-05-28 16:13");
+        mapd.put("auditResult", "通过");
+        auditLogs.add(mapd);
+
+        mapd = new HashMap();
+        mapd.put("auditPeople","唐长老4");
+        mapd.put("auditName","领导审批");
+        mapd.put("auditTime", "2020-05-28 16:13");
+        mapd.put("auditResult", "通过");
+        auditLogs.add(mapd);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("auditLogs", auditLogs);
+
+        map.put("exportTime", "2020-04-21 16:17:36");
+        map.put("userName", "乔谦");
+        map.put("userDept", "上海研发部");
+        map.put("tripPlanNo", "2020042000001");
+
+        map.put("tripType", "改签");
+        map.put("feeBelong", "2020-05-01");
+        map.put("tripPeople", "乔谦、汪琦璟");
+        map.put("tripReason", "领导让晚回来一天，领导让晚回来一天，领导让晚回来一天，领导让晚回来一天，领导让晚回来一天");
+
+        List<Map> travels = new ArrayList<>();
+        Map trip = new HashMap();
+        trip.put("date","2020年04月20日");
+        trip.put("dayOfWeek","星期一");
+        trip.put("from","虹桥机场");
+        trip.put("to","宝安机场");
+        travels.add(trip);
+        trip = new HashMap();
+        trip.put("date","2020年04月21日");
+        trip.put("dayOfWeek","星期二");
+        trip.put("from","虹桥机场1");
+        trip.put("to","宝安机场1");
+        travels.add(trip);
+        map.put("travels", travels);
+
+        System.out.println("map = " + map.toString());
+
+        String templateFilName = "tripPlanApplyTemplate.ftl";
+        String domain = "http://localhost:8082/";
+
+        PDFTemplateUtil pdfTemplateUtil = new PDFTemplateUtil(templateFilName);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        pdfTemplateUtil.createPDFFromUrlTemplate(domain,map, out);
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_PDF);
+        return new ResponseEntity<>(out.toByteArray(), httpHeaders, HttpStatus.OK);
+
+    }
 }
