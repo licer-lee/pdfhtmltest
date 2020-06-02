@@ -10,4 +10,7 @@ class PdfhtmltestApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    public void testBase64(){
+    }
 }

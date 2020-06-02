@@ -9,117 +9,7 @@
             font-family: SimSun;
         }
     </style>
-    <style>
-        /* style init */
-        html,
-        body,
-        ol,
-        ul,
-        li,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        th,
-        td,
-        dl,
-        dd,
-        form,
-        fieldset,
-        legend {
-            margin: 0;
-            padding: 0;
-        }
-        ul,
-        ol,
-        li {
-            list-style: none;
-        }
-        b,
-        strong {
-            font-weight: normal;
-        }
-        i,
-        em {
-            font-style: normal;
-        }
-        a,
-        u {
-            text-decoration: none;
-        }
 
-        .wrap {
-            width: 781px;
-            height: 588px;
-            margin: 0 auto;
-        }
-
-        /* header */
-        .header {
-            display: flex;
-            flex-direction: column;
-        }
-        .header .firstTitle {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #000;
-        }
-
-        .header .firstTitle .time {
-            margin-left: auto;
-        }
-
-        .header .secondTitle {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* basicInformation */
-        .basicInformation {
-            display: flex;
-            flex-direction: column;
-            border-bottom: 1px solid #000;
-        }
-        .basicInformation .information {
-            display: flex;
-            flex-direction: column;
-        }
-        .information .item {
-            display: flex;
-            flex: 1;
-            border: 1px solid #000;
-            border-bottom: 0;
-        }
-        .information .item .info {
-            display: flex;
-            flex: 1;
-        }
-
-        /* planTrip */
-        .planTrip .title {
-            border-bottom: 1px solid #000;
-        }
-        .planTrip .item {
-            display: flex;
-        }
-        .planTrip .item .left {
-            display: flex;
-            flex-direction: column;
-        }
-        .planTrip .item .right {
-            display: flex;
-            flex: 1;
-            background: #ccc;
-        }
-
-        /* approvalRecord */
-        .approvalRecord .title {
-            border-bottom: 1px solid #000;
-        }
-    </style>
 </head>
 <body>
 
@@ -130,7 +20,9 @@
             ${oldAssetCode}
         </td>
         <td rowspan="2" style="padding: 10px;">
-            <!--<img src="http://163.53.94.236:8080/mbcloud/M00/02/18/rBACGF7Mhy-AKEOdAAAD-0oRyRg821.jpg" alt="qrCodeUrl"/>-->
+<!--            <img src="http://163.53.94.236:8080/mbcloud/M00/02/18/rBACGF7Mhy-AKEOdAAAD-0oRyRg821.jpg" alt="qrCodeUrl"/>-->
+            <img src="data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABqCAIAAADbQ1PAAAADwklEQVR42u2ay27DMBAD/f8/3QI9pUDtkhwKfYA5BW0i26NI4pJ7XfLr7eP1+v71L3efvPv88/vn8fVvKaPpV0Sv4fsGzd3LhXL3SfKoyv0oUBSIOpPh6+FTFsjzJZXb0h9DufXnydMnyQU9fD+B7xmivpyz8bOjyd1Yhu8v4NMPe12y6ONwlOSQGb42Pl24uEJUX/iu3NWPLH4PNd03fIWi7X+/P17zDp8kU4ks0OW3W8ZnYpgT+DTm8NXwuQvW3W6zsu/EUUOshIv/aobPsAzdssw1JnUztXWgleXL8IX43E2dlHquLM8OE/e75MAZvgY+5YF1rG7JrS80V2BlNpQxAcNX+O1nESIRwPpxlAVSJybm9lrDF+IjQsQFR4p2gjILmKRiYfjKHRC8TSJrfsgkFIl+sq0JFXDDJx0ap8PyMJSJxHxWkko/heFD+Ejc51pM3UOg22hBtprhY/jIAcIFAZEsmTThG9TwNfCRiCezM4nQzQRQy5r9YoThQ/hqHwWh+4nQShfD3ckbPufeuk1mLanh/t0t47KmtOFr4+MWDTEOWoE6j+HRtA1fiI83PPB2DoLJRU+sMEn3DZ+9D7otDaQwcls1eHDabSCyg8rhk/C58pgsYSLIs3YLcnXp5B0+G1+26bYsoHMxEynXDKNh+Gr4SIDNl1WrCuITaZR6w9fq70Ell2uyErHtRleu3ZBtVsPn4zshWbKgh5iymfVADAUp6xi+cO/jBdmJJp1MargGRDnbHb6aWeAm8K1Yh3zLBW2MMHx8BLtRO1uMrTCI3HPoqejyZfgMfCekaUvKuiEksbnCqH74ED5iGWXLLSuYSOOSa3nZdv/wFfCR967UyB6GBEnnpmf4UnyutXm6yM8C7JZhYW8vw8fdwIKkIGY6X7Dcmiel4fCl+HhThCsdWpt9dhToC9NI2oaPXDGUtcSbzTb7TNhnm5J9/8MX3n9mVWabsWsQtAz3I7+44avhy4oqEkLyY4GHq9zQH74Gvm5B3iqDeNTpXsW20Yav4Gm6lmEWJGatQyQGyqwQtzFq+Hx82WIkF+aygxT5xBz75swdvhDfOYvU3apbgikbwRU9w9fG50oQYhmRZiK3QywTYVLWMXwhvizc4QV5y0rI2jDIZAxfG58rTUgJlckOEmC6pZs9DcNXwNdt6tFvwi283OXfvbpUewzfQXyZWeDaou5/s5ghM9aG73fjy1o7XAPNlSzumEZQOXzlnDeLhLKjIGtiyx6bH4mXq4+GLyzXuk0RmeR2bTTSRpKJ6uGz8b0DY3lWPPEH1C0AAAAASUVORK5CYII=" alt="qrCode"/>
+
             <img src="./qrLocal.jpg" alt="qrCodeUrl"/>
             <!--<img src="${qrCodeUrl}" alt="qrCodeUrl"/>-->
         </td>
