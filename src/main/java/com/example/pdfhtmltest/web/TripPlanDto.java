@@ -14,6 +14,7 @@ public class TripPlanDto implements Serializable {
     private List<AuditLog> auditLogs;
     private List<Travel> travels;
     private String exportTime;
+    private String companyName;
     private String userName;
     private String userDept;
     private String tripPlanNo;
@@ -21,6 +22,14 @@ public class TripPlanDto implements Serializable {
     private String feeBelong;
     private String tripPeople;
     private String tripReason;
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
     public List<AuditLog> getAuditLogs() {
         return auditLogs;

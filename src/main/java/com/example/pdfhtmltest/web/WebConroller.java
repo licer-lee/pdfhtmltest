@@ -158,6 +158,7 @@ public class WebConroller {
         TripPlanDto tripPlanDto = new TripPlanDto();
         tripPlanDto.setAuditLogs(auditLogs);
         tripPlanDto.setTravels(travels);
+        tripPlanDto.setCompanyName("招银商旅演示环境");
         tripPlanDto.setExportTime("2020-04-21 16:17:36");
         tripPlanDto.setUserName("乔谦");
         tripPlanDto.setUserDept("上海研发部");
