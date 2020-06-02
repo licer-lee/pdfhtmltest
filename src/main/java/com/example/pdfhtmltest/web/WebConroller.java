@@ -125,7 +125,7 @@ public class WebConroller {
 
         System.out.println("map = " + map.toString());
 
-        String templateFilName = "trip_exception.ftl";
+        String templateFilName = "tripException.ftl";
         String domain = "http://localhost:8082/";
 
         PDFTemplateUtil pdfTemplateUtil = new PDFTemplateUtil(templateFilName);
@@ -142,72 +142,38 @@ public class WebConroller {
     @RequestMapping("/tripPlan")
     public ResponseEntity<byte[]> tripPlan() {
 
-        List<Map> auditLogs = new ArrayList<>();
-        Map mapd = new HashMap();
-        mapd.put("auditPeople","孙悟空1");
-        mapd.put("auditName","发起申请");
-        mapd.put("auditTime", "2020-05-28 16:13");
-        mapd.put("auditResult", "提交审核");
-        auditLogs.add(mapd);
 
-        mapd = new HashMap();
-        mapd.put("auditPeople","猪八戒2");
-        mapd.put("auditName","领导审批");
-        mapd.put("auditTime", "2020-05-28 16:13");
-        mapd.put("auditResult", "通过");
-        auditLogs.add(mapd);
+        List<AuditLog> auditLogs = new ArrayList<>();
+        auditLogs.add(AuditLog.builder().auditPeople("孙悟空1").auditName("发起申请").auditTime("2020-05-28 16:13").auditResult("提交审核").build());
+        auditLogs.add(AuditLog.builder().auditPeople("猪八戒2").auditName("领导审批").auditTime("2020-05-28 16:13").auditResult("通过").build());
+        auditLogs.add(AuditLog.builder().auditPeople("沙和尚3").auditName("财务审批").auditTime("2020-05-28 16:13").auditResult("通过").build());
+        auditLogs.add(AuditLog.builder().auditPeople("唐长老4").auditName("领导审批").auditTime("2020-05-28 16:13").auditResult("通过").build());
 
-        mapd = new HashMap();
-        mapd.put("auditPeople","沙和尚3");
-        mapd.put("auditName","财务审批");
-        mapd.put("auditTime", "2020-05-28 16:13");
-        mapd.put("auditResult", "通过");
-        auditLogs.add(mapd);
+        List<Travel> travels = new ArrayList<>();
+        travels.add(Travel.builder().date("2020年04月20日").dayOfWeek("星期一").from("虹桥机场").to("宝安机场").build());
+        travels.add(Travel.builder().date("2020年04月21日").dayOfWeek("星期二").from("虹桥机场").to("宝安机场").build());
+        travels.add(Travel.builder().date("2020年04月22日").dayOfWeek("星期三").from("虹桥机场").to("宝安机场").build());
+        travels.add(Travel.builder().date("2020年04月23日").dayOfWeek("星期四").from("虹桥机场").to("宝安机场").build());
 
-        mapd = new HashMap();
-        mapd.put("auditPeople","唐长老4");
-        mapd.put("auditName","领导审批");
-        mapd.put("auditTime", "2020-05-28 16:13");
-        mapd.put("auditResult", "通过");
-        auditLogs.add(mapd);
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("auditLogs", auditLogs);
-
-        map.put("exportTime", "2020-04-21 16:17:36");
-        map.put("userName", "乔谦");
-        map.put("userDept", "上海研发部");
-        map.put("tripPlanNo", "2020042000001");
-
-        map.put("tripType", "改签");
-        map.put("feeBelong", "2020-05-01");
-        map.put("tripPeople", "乔谦、汪琦璟");
-        map.put("tripReason", "领导让晚回来一天，领导让晚回来一天，领导让晚回来一天，领导让晚回来一天，领导让晚回来一天");
-
-        List<Map> travels = new ArrayList<>();
-        Map trip = new HashMap();
-        trip.put("date","2020年04月20日");
-        trip.put("dayOfWeek","星期一");
-        trip.put("from","虹桥机场");
-        trip.put("to","宝安机场");
-        travels.add(trip);
-        trip = new HashMap();
-        trip.put("date","2020年04月21日");
-        trip.put("dayOfWeek","星期二");
-        trip.put("from","虹桥机场1");
-        trip.put("to","宝安机场1");
-        travels.add(trip);
-        map.put("travels", travels);
-
-        System.out.println("map = " + map.toString());
+        TripPlanDto tripPlanDto = new TripPlanDto();
+        tripPlanDto.setAuditLogs(auditLogs);
+        tripPlanDto.setTravels(travels);
+        tripPlanDto.setExportTime("2020-04-21 16:17:36");
+        tripPlanDto.setUserName("乔谦");
+        tripPlanDto.setUserDept("上海研发部");
+        tripPlanDto.setTripPlanNo("2020042000001");
+        tripPlanDto.setTripType("改签");
+        tripPlanDto.setFeeBelong("2020-05-01");
+        tripPlanDto.setTripPeople("乔谦、汪琦璟");
+        tripPlanDto.setTripReason("领导让晚回来一天，领导让晚回来一天，领导让晚回来一天，领导让晚回来一天，领导让晚回来一天");
+        System.out.println("tripPlanDto = " + tripPlanDto);
 
         String templateFilName = "tripPlanApplyTemplate.ftl";
         String domain = "http://localhost:8082/";
 
         PDFTemplateUtil pdfTemplateUtil = new PDFTemplateUtil(templateFilName);
-
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        pdfTemplateUtil.createPDFFromUrlTemplate(domain,map, out);
+        pdfTemplateUtil.createPDFFromUrlTemplate(domain,tripPlanDto, out);
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_PDF);
