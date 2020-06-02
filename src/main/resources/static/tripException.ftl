@@ -1,17 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title>差旅异常单</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <style type="text/css">
         body {
-            font-family: SimSun;
+            font-family: SimSun, serif;
         }
     </style>
 </head>
 <body>
 
-出差异常情况申请单    ------     ${company}         -----                导出时间：${exportTime}
+<table border="0" width="100%">
+    <tr>
+        <td align="left">出差异常情况申请单</td>
+        <td align="center">${company}</td>
+        <td align="right">导出时间：${exportTime}</td>
+    </tr>
+</table>
+<#--出差异常情况申请单    ------     ${company}         -----                导出时间：${exportTime}-->
 <hr style="height:1px;border:none;border-top:1px solid #555555;" />
 ${userName} - ${userDept}
 
