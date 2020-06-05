@@ -11,7 +11,8 @@ import java.io.*;
 @Slf4j
 public class ImageBuilderUtils {
 
-    private static final int width = 452;
+    private static final int width = 807;
+//    private static final int width = 452;
     private static final int height = 263;
 
     /**
@@ -96,7 +97,7 @@ public class ImageBuilderUtils {
             BufferedImage qrcode = ImageIO.read(fileInputStream);
 
             // logo
-            File logo = new File("d://mbcloud-logo-65_65.png");
+            File logo = new File("d://mbcloud-logo_200_200.png");
             FileInputStream fileInputStreamLogo = new FileInputStream(logo);
             BufferedImage bufferedImageLogo = ImageIO.read(fileInputStreamLogo);
 
@@ -106,21 +107,21 @@ public class ImageBuilderUtils {
             g2.setColor(Color.BLACK);
 
             // 画logo
-            g2.drawImage(bufferedImageLogo, 15, 15, 65, 65,null);
+            g2.drawImage(bufferedImageLogo, 20, 62, 138, 138,null);
 
             // 资产编号
 //            g2.drawRect(0, 0, width - 1, height - 1);
-            g2.setFont(new Font("黑体", Font.BOLD, 26));
+            g2.setFont(new Font("SourceHanSansCN-Bold", Font.BOLD, 36));
             g2.setColor(Color.BLACK);
-            g2.drawString("资产编号：", 15, 140);
-            g2.setFont(new Font("黑体", Font.BOLD, 30));
-            g2.drawString(code, 15, 188);
+            g2.drawString("资产编号：", 178, 77);
+            g2.setFont(new Font("SourceHanSansCN-Heavy", Font.BOLD, 48));
+            g2.drawString(code, 178, 138);
 
             // 分割线
-            g2.drawLine(241, 1, 241, 262);
+            g2.drawLine(531, 1, 531, 262);
 
             // 画二维码
-            g2.drawImage(qrcode, 257, 42, 180, 180,null);
+            g2.drawImage(qrcode, 553, 15, 234, 234,null);
 
             // 结束画图
             g2.dispose();
